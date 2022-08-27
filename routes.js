@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const f = require('./funciones')
+const f = require('./functions')
 
 // let oro = 0
 let total_oro = 0

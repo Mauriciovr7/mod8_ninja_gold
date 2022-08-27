@@ -18,68 +18,73 @@
     }
 
     form {
-      padding: 2rem;
+      padding: 1.9rem 0.9rem;
       border: 2px solid maroon;
       border-radius: 2rem;
       width: 100%;
       margin: 1rem auto;
+    }
+
+    p {
+      font-weight: bold;
+      font-size: larger;
+    }
+
+    h6 {
+      font-size: smaller;
+    }
+
+    span {
+      margin-left: 16%;
     }
   </style>
 </head>
 
 <body>
   <div class="container mt-5 bg-primary bg-opacity-25 p-4">
+    
     <h2>Tu Oro {{total_oro}}</h2>
     <div class="row">
 
       <!-- Granja -->
-      <div class="col-3">
+      <div class="col-6 col-md-3">
         <!-- <form action="/gold/process_money/granja" method="post"> -->
         <form method="post" action="/gold/process_money/">
-          <h3>Granja</h3>
+          <p>Granja <span>🟡</span></p>
           <h6>(gana 10-20 oro)</h6>
-          <div class="mb-3">
-            <input type="hidden" name="opcion" value="granja">
-          </div>
+          <input type="hidden" name="opcion" value="granja" class="mb-3">
           <!-- <input type="text" name="nombre"> -->
           <!-- <input type="submit" value="Encontrar Oro"> -->
-
           <button type="submit" class="btn btn-primary">Encontrar Oro</button>
         </form>
       </div>
 
       <!-- Cueva -->
-      <div class="col-3">
+      <div class="col-6 col-md-3">
         <form method="post" action="/gold/process_money/">
-          <h3>Cueva</h3>
+          <p>Cueva <span>🟡</span></p>
           <h6>(gana 5-10 oro)</h6>
-          <div class="mb-3">
-            <input type="hidden" name="opcion" value="cueva">
-          </div>
+          <input type="hidden" name="opcion" value="cueva" class="mb-3">
           <button type="submit" class="btn btn-primary">Encontrar Oro</button>
         </form>
       </div>
 
       <!-- Casa -->
-      <div class="col-3">
+      <div class="col-6 col-md-3">
         <form method="post" action="/gold/process_money/">
-          <h3>Casa</h3>
+          <p>Casa <span>🟡</span></p>
           <h6>(gana 2-5 oro)</h6>
-          <div class="mb-3">
-            <input type="hidden" name="opcion" value="casa">
-          </div>
+          <input type="hidden" name="opcion" value="casa" class="mb-3">
           <button type="submit" class="btn btn-primary">Encontrar Oro</button>
         </form>
       </div>
 
       <!-- Casino -->
-      <div class="col-3">
+      <div class="col-6 col-md-3">
         <form method="post" action="/gold/process_money/">
-          <h3>Casino</h3>
+          <p>Casino <span>🟡</span></p> 
           <h6>(gana/pierde 0-50)</h6>
-          <div class="mb-3">
-            <input type="hidden" name="opcion" value="casino">
-          </div>
+          <input type="hidden" name="opcion" value="casino" class="mb-3">
           <button type="submit" class="btn btn-primary">Encontrar Oro</button>
         </form>
       </div>
