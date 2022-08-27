@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block main %}
+  <div class="container mt-5 bg-primary bg-opacity-25 p-4">
+    
+    <h2>Tu Oro {{total_oro}}</h2>
+    <div class="row">
+
+      <!-- Granja -->
+      <div class="col-6 col-md-3">
+        <!-- <form action="/gold/process_money/granja" method="post"> -->
+        <form method="post" action="/gold/process_money/">
+          <p>Granja <span>🟡</span></p>
+          <h6>(gana 10-20 oro)</h6>
+          <!--  hidden en cada formulario para pasar la ubicación relevante al servidor -->
+          <input type="hidden" name="opcion" value="granja" class="mb-3">
+          <!-- <input type="text" name="nombre"> -->
+          <!-- <input type="submit" value="Encontrar Oro"> -->
+          <button type="submit" class="btn btn-primary">Encontrar Oro</button>
+        </form>
+      </div>
+
+      <!-- Cueva -->
+      <div class="col-6 col-md-3">
+        <form method="post" action="/gold/process_money/">
+          <p>Cueva <span>🟡</span></p>
+          <h6>(gana 5-10 oro)</h6>
+          <input type="hidden" name="opcion" value="cueva" class="mb-3">
+          <button type="submit" class="btn btn-primary">Encontrar Oro</button>
+        </form>
+      </div>
+
+      <!-- Casa -->
+      <div class="col-6 col-md-3">
+        <form method="post" action="/gold/process_money/">
+          <p>Casa <span>🟡</span></p>
+          <h6>(gana 2-5 oro)</h6>
+          <input type="hidden" name="opcion" value="casa" class="mb-3">
+          <button type="submit" class="btn btn-primary">Encontrar Oro</button>
+        </form>
+      </div>
+
+      <!-- Casino -->
+      <div class="col-6 col-md-3">
+        <form method="post" action="/gold/process_money/">
+          <p>Casino <span>🟡</span></p> 
+          <h6>(gana/pierde 0-50)</h6>
+          <input type="hidden" name="opcion" value="casino" class="mb-3">
+          <button type="submit" class="btn btn-primary">Encontrar Oro</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <!-- <div class="contaniner">
+    <h6>Usted lleva {{intentos}} intento{% if intentos > 1 %}s{% endif %}</h6>
+    <h3>Su palabra es: {{palabra}}</h3>
+    <p><a href="/random/reset">Volver a 0</a></p>
+  </div>
+-->
+
+  <div class="container mt-5 bg-primary bg-opacity-25 p-4">
+    <h2>Jugadas</h2>
+    <div class="row">
+      <div class="list-group barra overflow-auto">
+        {% for jugada in jugadas %}
+          {% if jugada.accion == 'Gana: ' %}
+            <a class="list-group-item list-group-item-action list-group-item-success">{{jugada.accion}} {{jugada.oro}} Oro en {{jugada.opcion}}</a>
+            {% else %} 
+            <a class="list-group-item list-group-item-action list-group-item-danger">{{jugada.accion}} {{jugada.oro}} Oro en {{jugada.opcion}}</a>
+          {%endif%}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}

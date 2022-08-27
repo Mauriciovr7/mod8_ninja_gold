@@ -17,8 +17,11 @@ const oro = (opcion) => {
     case 'casa':
       num = azar(2, 5)
       break
+    case 'casino':
+      num = azar(-50, 50)
+      break
     default:
-      num = azar(-50, 50)  
+      num = azar(0, 0)  
   }
   return num
 }

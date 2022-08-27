@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- bootstrap desde nodemodules -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <title>Ninja Gold</title>
+  <style>
+    .barra {
+      height: 210px;
+      overflow: scroll;
+    }
+
+    form {
+      padding: 1.9rem 0.9rem;
+      border: 2px solid maroon;
+      border-radius: 2rem;
+      width: 100%;
+      margin: 1rem auto;
+    }
+
+    p {
+      font-weight: bold;
+      font-size: larger;
+    }
+
+    h6 {
+      font-size: smaller;
+    }
+
+    span {
+      margin-left: 16%;
+    }
+  </style>
+</head>
+
+<body>
+  {% block main %}
+    <h1 class="text-center text-primary">Por implementar</h1>
+  {% endblock %}
+  
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script> -->
+  {% block scripts %}
+  <script>
+    console.log('Esto viene del template base');
+  </script>
+  {% endblock %}
+</body>
+
+</html>

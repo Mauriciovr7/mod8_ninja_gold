@@ -6,7 +6,7 @@ const router = require('./routes')
 
 const app = express()
 
-const port = 3000
+const port = 3001
 
 // se configura uso de sesiones
 app.use(session({ secret: '***' }))

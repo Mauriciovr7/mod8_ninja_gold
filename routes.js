@@ -2,13 +2,22 @@ const express = require('express')
 const router = express.Router()
 const f = require('./functions')
 
-// let oro = 0
 let total_oro = 0
 let accion = 'Gana: '
-const jugadas = []
 
 // get
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
+  res.render('index.html', {  }) // total_oro: req.session.total_oro
+})
+
+router.get('/gold', (req, res) => {
+  res.render('game.html', { total_oro: req.session.total_oro, jugadas: req.session.jugadas })
+})
+
+// post (funciones de calculo)
+// router.post('/gold/process_money/:opcion',  (req, res) => { // req.params.opcion
+router.post('/gold/process_money', (req, res) => {
+  const opcion = req.body.opcion
 
   if (req.session.total_oro == undefined) {
     req.session.total_oro = 0
@@ -17,35 +26,22 @@ router.get("/", (req, res) => {
     req.session.jugadas = []
   }
 
-  // req.session.x
-  req.session.total_oro = total_oro
-  req.session.jugadas = jugadas
-  res.render("index.html", { total_oro, jugadas })
-})
+  if (opcion) {
 
-// post (funciones de calculo)
-// router.post('/gold/process_money/:opcion',  (req, res) => {
-// console.log('process_money  ', req.params.opcion)
-router.post('/gold/process_money', (req, res) => { // + or - cant oro  y redirigir ruta raiz
-  const opcion = req.body.opcion
+    const oro = f.oro(opcion)
 
-  oro = f.oro(opcion)
+    if (oro < 0) {
+      accion = 'Pierde: '
+    }
+    // console.log('oro ', oro)
+    total_oro = oro
 
-  if (oro < 0) {
-    accion = 'Pierde: '
+    req.session.total_oro += total_oro
+    req.session.jugadas.push({ opcion, oro, accion })
+    accion = 'Gana: '
+    // console.log('total ', req.session.total_oro)
   }
-  console.log('oro ', oro)
-
-  // total_oro = total_oro + oro
-  total_oro += oro
-  console.log('total ', total_oro)
-
-  jugadas.push({ opcion, oro, accion })
-  accion = 'Gana: '
-  // console.log(jugadas)
-
-  res.redirect('/')
-
+  res.redirect('/gold')
 })
 
 // ruta 404
